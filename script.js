@@ -116,7 +116,6 @@ function copiarParaAreaTransferencia(){
   taResultado.select();
   document.execCommand('copy');
   textInput.value  = taResultado.value;
-  textInput.focus();
 }
 
 function textoValido(texto){
@@ -140,6 +139,16 @@ function validarTexto(texto){
   return true;
 }
 
+function divideReverteTexto(texto){
+  const tamanho     = texto.length / 2;
+  const inicioTexto = texto.substring(0, tamanho);
+  const fimTexto    = texto.substring(tamanho);
+  const resultado   = inicioTexto.split('').reverse().join('') + 
+                      fimTexto.split('').reverse().join('');
+
+  return resultado;
+}
+
 function criptografar(){
   /** Se o texto for válido, inicia a criptografia **/
   if(validarTexto(textInput)){
@@ -154,10 +163,12 @@ function criptografar(){
       /** 3. Após a segunda camada de criptografia, distribui espaços dentro do texto.  **/
     textoCriptografar = inserirEspacosNoTexto(3,8, textoCriptografar);
 
+    textoCriptografar = divideReverteTexto(textoCriptografar);
+
     taResultado.value = textoCriptografar;
     avisoDisparado    = false;
 
-    imgCadeado.src = './assets/images/cadeado-fechado.jpg'
+    mudarImagem(3);
   }else{
     /** Se não passar na validação, "dispara" o aviso ao usuário  **/
     avisoDisparado = true;
@@ -165,24 +176,27 @@ function criptografar(){
 }
 
 function descriptografar(){
+  textoCriptografar     = divideReverteTexto(textInput.value);
   textoDescriptografar  = CamuflarTexto(textoCriptografar, ' ', '');
   textoDescriptografar  = CamuflarTexto(textoDescriptografar, textoParaCamuflar, ' ');
-  textoDescriptografar  = descriptografiaPadrao(textoDescriptografar);
+  textoDescriptografar  = descriptografiaPadrao(textoDescriptografar);  
   taResultado.value     = textoDescriptografar;
   avisoDisparado        = false;
-  imgCadeado.src        = './assets/images/cadeado-aberto.jpg'
-}
-
-function onTextInputChange(input){
-  btnCriptografar.disabled = (input.value.length == 0);
+  mudarImagem(2)
 }
 
 function bloquearBtnCriptografar(){
-  btnCriptografar.disabled = textInput.value == '';
+  if(textInput.value == ''){
+    btnCriptografar.disabled = true;
+    mudarImagem(1)
+  }else{
+    btnCriptografar.disabled = false;
+    mudarImagem(2)
+  }
 }
 
-function bloquearBtnCopiar(desabilitado){
-  btnCopiar.disabled = (desabilitado == true ? false : true);
+function bloquearBtnCopiar(){
+  btnCopiar.disabled = (btnCopiar.disabled == true ? false : true);
 }
 
 function bloquearBtnDescriptografar(){
@@ -190,9 +204,26 @@ function bloquearBtnDescriptografar(){
     (textInput.value == '' || (textInput.value != '' && taResultado.value != ''));  
 }
 
+function mudarImagem(numImagem){
+  if(numImagem == 1){
+    imgCadeado.src = './assets/images/carimbo-alura.png' 
+  }else{
+    if(numImagem == 2){
+      imgCadeado.src = './assets/images/cadeado-aberto.jpg'
+    }else{
+      imgCadeado.src = './assets/images/cadeado-fechado.jpg'
+    }
+  }
+}
+
 function limparCampos(){
   textInput.value   = '';
   taResultado.value = '';
+  mudarImagem(1);
+}
+
+function mudarCorFundoInput(cor){
+  textInput.style.backgroundColor = cor == 'azul' ? 'rgb(155, 155, 240)' : 'rgb(114, 207, 114';
 }
 
 /******************************************************* Declarações principais *********************************************************/
@@ -213,21 +244,28 @@ const btnCopiar           = document.getElementById('btn-copiar');
 const btnDescriptografar  = document.getElementById('btn-descriptografar');
 const btnLimparCampos     = document.getElementById('btn-limpar-campos');
 /******************************************************* Declarações principais *********************************************************/
+
 bloquearBtnCriptografar();
 
 textInput.addEventListener('focus', ()=>{
+  mudarCorFundoInput('verde');
   if(avisoDisparado){
     textInput.value = '';
-  }
+  }  
 })
 
-textInput.addEventListener('change', ()=>{
+textInput.addEventListener('focusout', ()=>{
+  mudarCorFundoInput('azul');
+})
+
+textInput.addEventListener('keyup', ()=>{
+  mudarImagem(textInput.value === '' ? 1 : 2);
   bloquearBtnCriptografar();
 })
 
 btnCriptografar.addEventListener('click', ()=>{
   criptografar(); 
-  bloquearBtnCopiar(btnCopiar.disabled);
+  bloquearBtnCopiar();
 })
 
 btnCopiar.addEventListener('click', ()=>{

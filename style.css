@@ -9,13 +9,12 @@
 
 main{
    display: flex;
-   /* margin-top: 3rem;
-   margin-left: 13rem; */
    margin: auto;
+   margin-top: 2rem;
    height: 30rem;
    width: 750px;   
    border-radius: 2%;
-   padding: 40px 20px 20px 20px;
+   padding: 40px 20px 20px 5px;
    gap: 10px;
    background-image: url('./assets/images/spy-4.png'); 
 }
@@ -54,8 +53,8 @@ main{
 
 #cadeado img{
    width: 100%;
-   height: 50%;
-   border-radius: 5%;   
+   height: 40%;
+   border-radius: 10%;   
 }
 
 #main-section{
@@ -78,7 +77,7 @@ main{
    padding: 10px;
    resize: none;
    opacity: 85%;  
-   background-color: rgb(114, 207, 114);
+   background-color: rgb(155, 155, 240);
    font-size: 20px;
    color: white;
 }
