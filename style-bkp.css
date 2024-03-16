@@ -1,0 +1,117 @@
+*{
+   margin: 0;
+   padding: 0;
+   /* box-sizing: border-box; */
+   font-family: 'inter', sans-serif;  
+   /* background: #E9ECF8; */
+   
+}
+
+main{
+   display: flex;
+   /* margin-top: 3rem;
+   margin-left: 13rem; */
+   margin: auto;
+   height: 30rem;
+   width: 750px;   
+   border-radius: 2%;
+   padding: 20px;
+   gap: 10px;
+   background-image: url('./assets/images/spy-4.png');
+}
+
+/* #main-section{
+   width: 80%;
+   border: solid 1px red;
+} */
+
+/* #form-group{
+   height: 10rem;
+   width: 100%;   
+   display: flex;
+   flex-direction: column;
+   font-size: 18px;
+   color: white;
+} */
+
+/* #form-group #text-input{
+   height: 100%;
+   border-radius: 15px;
+   margin: 10px 0px 10px 0px;
+   padding: 10px;
+   resize: none;
+   opacity: 85%;  
+   background-color: rgb(114, 207, 114);
+   font-size: 20px;
+   color: white;
+} */
+
+/* .div-aparece{
+   display: flex;
+   flex-direction: column;
+   height: 15rem;
+   width: 100; 
+   margin: 10px 0px 10px 0px; 
+} */
+
+/* .div-aparece .div-mensagem{
+   height: 100%;
+   border-radius: 15px;
+   padding: 10px;
+   resize: none;
+   opacity: 85%;
+   background-color: rgb(155, 155, 240);
+   font-size: 20px;
+   color: white;
+} */
+
+/* #main-img{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 20%;
+   border: solid 2px red;
+   height: 23.4rem;
+   margin-top: 2rem;   
+} */
+
+/* #main-img #logo{
+   height: 10rem;
+   width: 100%;
+   border: solid 2px blue;
+   display: flex;
+   align-items: center;
+} */
+
+/* #main-img #cadeado{
+   height: 100%;
+   width: 70%;
+   border: solid 2px yellow;
+   display: flex;
+   align-items: center;
+   margin-top: 2rem;   
+} */
+
+/* #main-img img{
+   width: 100%;
+   height: 50%;
+   border-radius: 5%;
+} */
+
+/* #botoes-div{
+   width: 100%;
+   display: flex;
+   justify-content: center;      
+   padding-top: 10px;
+   gap: 4px;     
+} */
+
+/* #botoes-div button{
+   width: 8rem;
+   height: 2rem;
+   border-radius: 5px;    
+   opacity: 100%;
+   background-color: rgb(52, 126, 52);
+   color: white;
+} */

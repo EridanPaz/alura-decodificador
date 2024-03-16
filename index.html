@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="./script.js" defer></script>
+   <link rel="stylesheet" href="./style.css">
+   <title>Decodificador</title>   
+</head>
+<body>
+   <header>
+      <div>
+         <img class="logo" src="" alt="">   
+      </div>
+   </header>
+   <main>
+      <section id="main-img">
+         <div id="logo">
+            <img src="./assets/images/logo-alura.jpeg" alt="">
+         </div>         
+         <div id="cadeado">
+            <img id="imgCadeado" src="./assets/images/cadeado-aberto.jpg" alt="">
+         </div>
+      </section>      
+      <section id="main-section">         
+         <section id="secao-1">
+            <div>
+               <div id="form-group">            
+                  <label for="input-texto">apenas letras minúsculas e sem acento</label>
+                  <textarea id="text-input" rows="9">minha linda</textarea>
+               </div>
+            </div>                          
+         </section>
+         
+         <section id="secao-2">
+            <div class="div-aparece">
+               <textarea class="div-mensagem" readonly></textarea>                        
+            </div>
+            <div id="botoes-div">
+               <button id="btn-criptografar" disabled>
+                  Criptografar
+               </button> 
+               <button id="btn-copiar" disabled>
+                  Copiar
+               </button>
+               <button id="btn-descriptografar" disabled>
+                  Descriptografar
+               </button> 
+               <button id="btn-limpar-campos">
+                  Limpar
+               </button>
+            </div>
+         </section>
+      </section>
+   </main>
+</body>
+</html>
