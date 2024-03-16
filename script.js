@@ -206,7 +206,7 @@ function bloquearBtnDescriptografar(){
 
 function mudarImagem(numImagem){
   if(numImagem == 1){
-    imgCadeado.src = './assets/images/carimbo-alura.png' 
+    imgCadeado.src = './assets/images/carimbo-alura.jpg' 
   }else{
     if(numImagem == 2){
       imgCadeado.src = './assets/images/cadeado-aberto.jpg'
