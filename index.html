@@ -9,42 +9,54 @@
 </head>
 <body>
    <main>
-      <section id="main-img">
-         <div id="logo">
-            <img src="./assets/images/logo-alura.jpeg" alt="Logomarca da Alura">
-         </div>         
-         <div id="cadeado">
-            <img id="imgCadeado" src="./assets/images/alura-carimbo.jpg" alt="Imagens que serão trocadas dinamicamente: caribo(decodifique), cadeado fechado, cadeado aberto">
+      <section id="how-todo">
+         <div id="how-todo-orientacao">
+            <p id="how-todo-orientacao-texto"></p>
          </div>
-      </section>      
-      <section id="main-section">         
-         <section id="secao-1">
-            <div>
-               <div id="form-group">            
-                  <label for="text-input">apenas letras minúsculas e sem acento</label>
-                  <textarea id="text-input" rows="9"></textarea>
+         <div id="how-todo-button">
+            <button id="btn-orientacao">Passos</button>
+         </div>
+      </section>
+      <section id="general-section">
+         <section id="section-main">
+            <section id="section-main-img">
+               <div id="logo">
+                  <img src="./assets/images/logo-alura.jpeg" alt="Logomarca da Alura">
+               </div>         
+               <div id="cadeado">
+                  <img id="imgCadeado" src="./assets/images/alura-carimbo.jpg" alt="Imagens que serão trocadas dinamicamente: caribo(decodifique), cadeado fechado, cadeado aberto">
                </div>
-            </div>                          
-         </section>
-         
-         <section id="secao-2">
-            <div class="div-aparece">
-               <textarea class="div-mensagem" readonly></textarea>                        
-            </div>
-            <div id="botoes-div">
-               <button id="btn-criptografar" disabled>
-                  Criptografar
-               </button> 
-               <button id="btn-copiar" disabled>
-                  Copiar
-               </button>
-               <button id="btn-descriptografar" disabled>
-                  Descriptografar
-               </button> 
-               <button id="btn-limpar-campos">
-                  Limpar
-               </button>
-            </div>
+            </section>      
+            <section id="general-section-input">         
+               <section id="">
+                  <div>
+                     <div id="form-group">            
+                        <label for="text-input">Apenas letras minúsculas e sem acento</label>
+                        <textarea id="text-input" rows="9"></textarea>
+                     </div>
+                  </div>                          
+               </section>
+               
+               <section id="button-section">
+                  <div class="div-recebe">
+                     <textarea class="div-mensagem" readonly></textarea>                        
+                  </div>
+                  <div id="div-botoes">
+                     <button id="btn-criptografar" disabled>
+                        Criptografar
+                     </button> 
+                     <button id="btn-copiar" disabled>
+                        Copiar
+                     </button>
+                     <button id="btn-descriptografar" disabled>
+                        Descriptografar
+                     </button> 
+                     <button id="btn-limpar-campos">
+                        Limpar
+                     </button>
+                  </div>
+               </section>
+            </section>
          </section>
       </section>
    </main>

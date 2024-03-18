@@ -9,17 +9,59 @@
 
 main{
    display: flex;
+   /* border: solid 2px black; */
+}
+
+#how-todo{
+   height: 31.5rem;
+   width: 180px;
+   margin: 4.1rem 7rem 0 1rem;
+   padding: 30px 30px 0px 30px;   
+   border: solid 2px rgb(108, 108, 235);;  
+   border-radius: 10px;   
+}
+
+#how-todo-orientacao{   
+   /* border: solid 2px red; */
+   height: 80%;
+   display: flex;
+   align-items: center;
+   text-align: center;
+}
+
+#how-todo-orientacao p{
+   /* border: solid 2px yellow */
+}
+
+#how-todo-button{
+   /* border: solid 2px green; */
+   height: 20%;
+   display: flex;
+   align-items: center;
+   justify-content: center;   
+}
+
+#how-todo-button button{
+   width: 130px;
+   height: 35px;
+   background-color: rgb(108, 108, 235);
+   border-radius: 6px;
+   border: none;
+}
+
+#section-main{
+   display: flex;
    margin: auto;
-   margin-top: 2rem;
+   margin-top: 4rem;
    height: 30rem;
    width: 750px;   
-   border-radius: 2%;
+   border-radius: 2%;      
    padding: 40px 20px 20px 5px;
    gap: 10px;
    background-image: url('./assets/images/spy-4.png'); 
 }
 
-#main-img{
+#section-main-img{
    width: 20%;
    height: 23.4rem;
    margin-top: 2rem; 
@@ -57,8 +99,8 @@ main{
    border-radius: 10%;   
 }
 
-#main-section{
-   width: 80%;
+#general-section-input{
+   width: 77%;
 }
 
 #form-group{
@@ -77,12 +119,12 @@ main{
    padding: 10px;
    resize: none;
    opacity: 85%;  
-   background-color: rgb(155, 155, 240);
+   background-color:  rgb(155, 155, 240);
    font-size: 20px;
    color: white;
 }
 
-.div-aparece{
+.div-recebe{
    display: flex;
    flex-direction: column;
    height: 15rem;
@@ -90,7 +132,7 @@ main{
    margin: 10px 0px 10px 0px; 
 }
 
-.div-aparece .div-mensagem{
+.div-recebe .div-mensagem{
    height: 100%;
    border-radius: 15px;
    padding: 10px;
@@ -101,7 +143,7 @@ main{
    color: white;
 }
 
-#botoes-div{
+#div-botoes{
    width: 100%;
    display: flex;
    justify-content: center;      
@@ -109,10 +151,11 @@ main{
    gap: 4px;     
 }
 
-#botoes-div button{
+#div-botoes button{
    width: 8rem;
    height: 2rem;
-   border-radius: 5px;    
+   border-radius: 6px; 
+   border: none;   
    opacity: 100%;
    background-color: rgb(52, 126, 52);
    color: white;

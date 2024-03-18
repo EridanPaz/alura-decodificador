@@ -5,6 +5,13 @@ const letraProibida = ['á','à','ã','â','ä','é','è','ê','ë','í','ì','�
                         'Á','À','Ã','Â','Ä','É','È','Ê','Ë','Í','Ì','Î','Ï','Ó','Ò','Õ','Ö','Ô','Ú','Ù','Û','Ü','Ç',
                         'A','B','C','D','E','F','J','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
+const orientacao = ['1. Digite o texto a ser criptografado no primeiro campo.', 
+                    '2. Clique em "Criptografar". A criptografia aparecerá no segundo campo.', 
+                    '3. Clique em "Copiar". A criptografia será copiada para o primeiro campo.', 
+                    '4. Clique em "Descriptografar. O texto será descriptografado e apresentado no segundo campo."', 
+                    '5. Clique em "Limpar" para limpar os campos e reiniciar a aplicação.'];
+
+
 function inserirSubstring(str, subStr, indiceInicio, indiceFim){
   /**
    * Insere uma substring dentro uma string.
@@ -217,13 +224,56 @@ function mudarImagem(numImagem){
 }
 
 function limparCampos(){
-  textInput.value   = '';
-  taResultado.value = '';
+  pTextoOrientacao.innerText      = 'Clique no botão abaixo para orientação do passo a passo de como executar a aplicação.'
+  textInput.value                 = '';
+  taResultado.value               = '';
+  textInput.style.border          = 'none';
+  taResultado.style.border        = 'none';
+  btnCriptografar.style.border    = 'none';
+  btnCopiar.style.border          = 'none';
+  btnDescriptografar.style.border = 'none';
+  btnLimparCampos.style.border    = 'none';
   mudarImagem(1);
 }
 
 function mudarCorFundoInput(cor){
   textInput.style.backgroundColor = cor == 'azul' ? 'rgb(155, 155, 240)' : 'rgb(114, 207, 114';
+}
+
+function textoOrientacao(indice){  
+  pTextoOrientacao.innerText = indice < 5 ? orientacao[indice] : '';
+  btnOrientacao.innerText    = indice < 5 ? `Passo ${indice + 1}`: 'Passos';
+
+  switch (indice){
+    case 0:
+      textInput.style.border = 'solid 6px yellow';
+    break
+    case 1:
+      textInput.style.border       = 'none';          
+      taResultado.style.border     = 'solid 6px red';
+      btnCriptografar.style.border = 'solid 4px red';
+    break
+    case 2:
+      textInput.style.border       = 'solid 6px red';                   
+      taResultado.style.border     = 'none';    
+      btnCriptografar.style.border = 'none';
+      btnCopiar.style.border       = 'solid 4px red'; 
+    break    
+    case 3:
+      textInput.style.border          = 'none';  
+      taResultado.style.border        = 'solid 6px red'; 
+      btnCopiar.style.border          = 'none';    
+      btnDescriptografar.style.border = 'solid 4px red';        
+    break 
+    case 4:
+      btnDescriptografar.style.border = 'none';        
+      textInput.style.border          = 'solid 6px red';
+      btnLimparCampos.style.border    = 'solid 4px red'          
+    break 
+    default:
+      limparCampos();    
+  }  
+  return (indice < 5 ?  ++indice : 0);
 }
 
 /******************************************************* Declarações principais *********************************************************/
@@ -239,13 +289,17 @@ let textoDescriptografar;
 const textInput           = document.getElementById('text-input');
 let taResultado           = document.querySelector('.div-mensagem');
 let imgCadeado            = document.getElementById('imgCadeado');
+let btnOrientacao         = document.getElementById('btn-orientacao');
+let pTextoOrientacao      = document.getElementById('how-todo-orientacao-texto');
 const btnCriptografar     = document.getElementById('btn-criptografar');
 const btnCopiar           = document.getElementById('btn-copiar');
 const btnDescriptografar  = document.getElementById('btn-descriptografar');
 const btnLimparCampos     = document.getElementById('btn-limpar-campos');
+const generalSection      = document.getElementById('general-section');
 /******************************************************* Declarações principais *********************************************************/
 
-bloquearBtnCriptografar();
+// bloquearBtnCriptografar();
+limparCampos();
 
 textInput.addEventListener('focus', ()=>{
   mudarCorFundoInput('verde');
@@ -284,4 +338,10 @@ btnLimparCampos.addEventListener('click', ()=>{
   bloquearBtnCriptografar();
   bloquearBtnDescriptografar();
   bloquearBtnCopiar();
+})
+
+let indice = 0;
+
+btnOrientacao.addEventListener('click', ()=>{
+  indice = textoOrientacao(indice);
 })
