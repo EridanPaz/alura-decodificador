@@ -199,7 +199,7 @@ function bloquearBtnCriptografar(){
 }
 
 function bloquearBtnCopiar(){
-  btnCopiar.disabled = (btnCopiar.disabled == true ? false : true);
+  btnCopiar.disabled = (taResultado.innerText == '' ? false : true);
 }
 
 function bloquearBtnDescriptografar(){
