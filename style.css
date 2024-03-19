@@ -7,6 +7,14 @@
    
 }
 
+body{ 
+   min-height: 100vh;     
+   background-image: url('./assets/images/Background.jpg'); 
+   /* background-size: 100%;
+   background-position: top; */
+   /* border: solid 2px red; */
+}
+
 main{
    display: flex;
    /* border: solid 2px black; */

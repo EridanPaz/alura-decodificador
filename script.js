@@ -246,7 +246,7 @@ function textoOrientacao(indice){
 
   switch (indice){
     case 0:
-      textInput.style.border = 'solid 6px yellow';
+      textInput.style.border = 'solid 6px red';
     break
     case 1:
       textInput.style.border       = 'none';          
