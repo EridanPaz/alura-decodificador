@@ -13,12 +13,12 @@ const orientacao = ['1. Digite o texto a ser criptografado no primeiro campo.',
 
 
 function inserirSubstring(str, subStr, indiceInicio, indiceFim){
-  /**
-   * Insere uma substring dentro uma string.
-   * 1. É copiada uma parte da string (idxInicio, idxFim)
-   * 2. A essa parte é concatenada a substring passa no parâmetro SUBSTR.
-   * 3. Ao resultado dessa junção é concatenada a segunda parte da string original (onde é passado só o índice inicial).
-   */
+            /**
+             * Insere uma substring dentro uma string.
+             * 1. É copiada uma parte da string (idxInicio, idxFim)
+             * 2. A essa parte é concatenada a substring passa no parâmetro SUBSTR.
+             * 3. Ao resultado dessa junção é concatenada a segunda parte da string original (onde é passado só o índice inicial).
+             */
   novaStr = str.substring(indiceInicio, indiceFim)  + 
             subStr                                  + 
             str.substring(indiceFim);
@@ -27,16 +27,16 @@ function inserirSubstring(str, subStr, indiceInicio, indiceFim){
 }
 
 function intEntreDoisInts(min, max){ 
-  /** Retorna um inteiro criado randomicamente limitado por min e max **/ 
+            /** Retorna um inteiro criado randomicamente limitado por min e max **/ 
   num = Math.random() * (max - min) + min;
 
   return parseInt(num.toFixed(0));
 }
 
 function inserirEspacosNoTexto(numMin, numMax, texto){
-  /**
-   * Criada para inserir espaços "aleatórios" no texto, de acordo com o tamanho passado randomicamente entre numMin e numMax.
-   */  
+            /**
+             * Criada para inserir espaços "aleatórios" no texto, de acordo com o tamanho passado randomicamente entre numMin e numMax.
+             */  
   let indice         = 0;   
   let textoComEspaco = texto;
 
@@ -54,7 +54,7 @@ function inserirEspacosNoTexto(numMin, numMax, texto){
 }
 
 const gerarStringRandomica = (qtdString) => {
-  /** Criada originalmente para criar uma string randômica com os caracteres abaixo **/
+            /** Criada originalmente para criar uma string randômica com os caracteres abaixo **/
    const caractere = 'abcdefghijklmnopqrstuvwxyz';
    
    let result = ''; 
@@ -70,10 +70,10 @@ const gerarStringRandomica = (qtdString) => {
  };
 
 function embaralhar(texto1, texto2){
-  /**
-   * Criada originalmente para embaralhar a palavra-chave com a string randômica.
-   * A string randômica tem o tamanho da palavra-chave + 1. Assim a segunda fica totalmente dentro da primeira.
-   **/
+            /**
+             * Criada originalmente para embaralhar a palavra-chave com a string randômica.
+             * A string randômica tem o tamanho da palavra-chave + 1. Assim a segunda fica totalmente dentro da primeira.
+             **/
    let indiceChar = 0;
  
    for(let i = 0; i < texto2.length; i++){
@@ -91,7 +91,7 @@ function embaralhar(texto1, texto2){
  }
 
 function CamuflarTexto(texto, strASerTrocada, strATrocar){
-  /** Criada originalmente para trocar os espaços por outra string **/
+            /** Criada originalmente para trocar os espaços por outra string **/
   let novoTexto;
 
   novoTexto = texto.replaceAll(strASerTrocada, strATrocar);
@@ -125,28 +125,8 @@ function copiarParaAreaTransferencia(){
   textInput.value  = taResultado.value;
 }
 
-function textoValido(texto){
-  /** Verifica se o texto está de acordo com as regras par criptografia **/
-  for(i = 0; i < letraProibida.length; i++){
-      if(texto.indexOf(letraProibida[i]) > -1){
-        return false;      
-      }      
-  }
-    
-  return true;    
-}
-
-function validarTexto(texto){
-  /** Se o texto não seguir as regas de criptografia, o componente recebe a mensagem de correção **/
-  if(!textoValido(textInput.value)){
-    textInput.value = document.querySelector('label[for="input-texto"]').outerText;
-    return false;
-  }
-
-  return true;
-}
-
 function divideReverteTexto(texto){
+              /** Divide o texto em duas partes e os concatena após revertê-los. **/
   const tamanho     = texto.length / 2;
   const inicioTexto = texto.substring(0, tamanho);
   const fimTexto    = texto.substring(tamanho);
@@ -156,18 +136,31 @@ function divideReverteTexto(texto){
   return resultado;
 }
 
+function textoValido(texto){
+            /** Verifica se o texto está de acordo com as regras par criptografia **/
+  for(i = 0; i < letraProibida.length; i++){
+      if(texto.indexOf(letraProibida[i]) > -1){
+        return false;      
+      }      
+  }
+    
+  return true;    
+}
+
 function criptografar(){
-  /** Se o texto for válido, inicia a criptografia **/
-  if(validarTexto(textInput)){
+            /** Se o texto for válido, inicia a criptografia **/
+    if(textoValido(textInput.value)){    
+    textInput.id = 'text-input';
+
     textoCriptografar = textInput.value;
 
-      /** 1. Aplica a criptografia padrão do desafio.  **/
+            /** 1. Aplica a criptografia padrão do desafio.  **/
     textoCriptografar = criptografiaPadrao(textoCriptografar);
-      /** 2. Aplica outra camada de criptografia. Camufla o texto, trocando os espaços pelo texto formado pela 
-       *  palavra-chave com o texto criado randomicamente). **/
+            /** 2. Aplica outra camada de criptografia. Camufla o texto, trocando os espaços pelo texto formado pela 
+            *  palavra-chave com o texto criado randomicamente). **/
     textoCriptografar = CamuflarTexto(textoCriptografar, ' ',textoParaCamuflar);
 
-      /** 3. Após a segunda camada de criptografia, distribui espaços dentro do texto.  **/
+            /** 3. Após a segunda camada de criptografia, distribui espaços dentro do texto.  **/
     textoCriptografar = inserirEspacosNoTexto(3,8, textoCriptografar);
 
     textoCriptografar = divideReverteTexto(textoCriptografar);
@@ -177,8 +170,11 @@ function criptografar(){
 
     mudarImagem(3);
   }else{
-    /** Se não passar na validação, "dispara" o aviso ao usuário  **/
-    avisoDisparado = true;
+            /** Se não passar na validação, "dispara" o aviso ao usuário  **/
+    textInput.id ='mensagem-alerta';
+
+    textInput.value = document.querySelector('label[for="text-input"]').outerText;   
+    avisoDisparado  = true;
   }
 }
 
@@ -224,6 +220,8 @@ function mudarImagem(numImagem){
 }
 
 function limparCampos(){
+  textInput.setAttribute('id', 'text-input');
+
   pTextoOrientacao.innerText      = 'Clique no botão abaixo para orientação do passo a passo de como executar a aplicação.'
   textInput.value                 = '';
   taResultado.value               = '';
@@ -233,46 +231,61 @@ function limparCampos(){
   btnCopiar.style.border          = 'none';
   btnDescriptografar.style.border = 'none';
   btnLimparCampos.style.border    = 'none';
+  indiceOrientacao                = 0;
   mudarImagem(1);
+  elementoTransiction(0);
 }
 
 function mudarCorFundoInput(cor){
   textInput.style.backgroundColor = cor == 'azul' ? 'rgb(155, 155, 240)' : 'rgb(114, 207, 114';
 }
 
-function textoOrientacao(indice){  
+function elementoTransiction(tempo){
+  textInput.style.transition          = tempo + 's';
+  taResultado.style.transition        = tempo + 's';
+  btnCriptografar.style.transition    = tempo + 's';
+  btnCopiar.style.transition          = tempo + 's';
+  btnDescriptografar.style.transition = tempo + 's';
+  btnLimparCampos.style.transition    = tempo + 's';
+}
+
+function textoOrientacao(indice){
+  elementoTransiction(1)  ;
+
   pTextoOrientacao.innerText = indice < 5 ? orientacao[indice] : '';
   btnOrientacao.innerText    = indice < 5 ? `Passo ${indice + 1}`: 'Passos';
 
   switch (indice){
     case 0:
-      textInput.style.border = 'solid 6px red';
+      textInput.style.border     = 'solid 6px red';
     break
-    case 1:
-      textInput.style.border       = 'none';          
-      taResultado.style.border     = 'solid 6px red';
-      btnCriptografar.style.border = 'solid 4px red';
+    case 1:                
+      textInput.style.border           = 'none';
+      taResultado.style.border         = 'solid 6px red';
+      btnCriptografar.style.border     = 'solid 4px red';
     break
     case 2:
-      textInput.style.border       = 'solid 6px red';                   
-      taResultado.style.border     = 'none';    
-      btnCriptografar.style.border = 'none';
-      btnCopiar.style.border       = 'solid 4px red'; 
+      textInput.style.border           = 'solid 6px red';                   
+      taResultado.style.border         = 'none';  
+      btnCriptografar.style.border     = 'none';
+      btnCopiar.style.border           = 'solid 4px red'; 
     break    
     case 3:
       textInput.style.border          = 'none';  
       taResultado.style.border        = 'solid 6px red'; 
       btnCopiar.style.border          = 'none';    
-      btnDescriptografar.style.border = 'solid 4px red';        
+      btnDescriptografar.style.border = 'solid 4px red';
     break 
     case 4:
-      btnDescriptografar.style.border = 'none';        
-      textInput.style.border          = 'solid 6px red';
-      btnLimparCampos.style.border    = 'solid 4px red'          
+      btnDescriptografar.style.border  = 'none';        
+      textInput.style.border           = 'solid 6px red'; 
+      btnLimparCampos.style.border     = 'solid 4px red';
     break 
     default:
       limparCampos();    
-  }  
+  }
+     
+  
   return (indice < 5 ?  ++indice : 0);
 }
 
@@ -291,6 +304,7 @@ let taResultado           = document.querySelector('.div-mensagem');
 let imgCadeado            = document.getElementById('imgCadeado');
 let btnOrientacao         = document.getElementById('btn-orientacao');
 let pTextoOrientacao      = document.getElementById('how-todo-orientacao-texto');
+let indiceOrientacao      = 0;
 const btnCriptografar     = document.getElementById('btn-criptografar');
 const btnCopiar           = document.getElementById('btn-copiar');
 const btnDescriptografar  = document.getElementById('btn-descriptografar');
@@ -298,7 +312,6 @@ const btnLimparCampos     = document.getElementById('btn-limpar-campos');
 const generalSection      = document.getElementById('general-section');
 /******************************************************* Declarações principais *********************************************************/
 
-// bloquearBtnCriptografar();
 limparCampos();
 
 textInput.addEventListener('focus', ()=>{
@@ -340,8 +353,6 @@ btnLimparCampos.addEventListener('click', ()=>{
   bloquearBtnCopiar();
 })
 
-let indice = 0;
-
 btnOrientacao.addEventListener('click', ()=>{
-  indice = textoOrientacao(indice);
+  indiceOrientacao = textoOrientacao(indiceOrientacao);  
 })

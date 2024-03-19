@@ -3,16 +3,13 @@
    padding: 0;
    /* box-sizing: border-box; */
    font-family: 'inter', sans-serif;  
-   /* background: #E9ECF8; */
-   
+   /* background: #E9ECF8; */   
 }
 
 body{ 
    min-height: 100vh;     
    background-image: url('./assets/images/Background.jpg'); 
-   /* background-size: 100%;
-   background-position: top; */
-   /* border: solid 2px red; */
+   /* background-size: 100%; */
 }
 
 main{
@@ -30,7 +27,6 @@ main{
 }
 
 #how-todo-orientacao{   
-   /* border: solid 2px red; */
    height: 80%;
    display: flex;
    align-items: center;
@@ -38,11 +34,11 @@ main{
 }
 
 #how-todo-orientacao p{
-   /* border: solid 2px yellow */
+   font-size: 17px;
+   font-weight: bold;
 }
 
-#how-todo-button{
-   /* border: solid 2px green; */
+#how-todo-button{   
    height: 20%;
    display: flex;
    align-items: center;
@@ -52,7 +48,7 @@ main{
 #how-todo-button button{
    width: 130px;
    height: 35px;
-   background-color: rgb(108, 108, 235);
+   background-color: rgb(155, 155, 240);
    border-radius: 6px;
    border: none;
 }
@@ -119,6 +115,10 @@ main{
    font-size: 18px;
    color: white;
 }
+#lb-text-input{
+   padding-left: 10px;
+   text-align: center;
+}
 
 #form-group #text-input{
    height: 100%;
@@ -130,6 +130,21 @@ main{
    background-color:  rgb(155, 155, 240);
    font-size: 20px;
    color: white;
+   text-align: center;
+}
+
+#mensagem-alerta{
+   height: 100%;
+   border-radius: 15px;
+   margin: 10px 0px 10px 0px;
+   padding: 10px;
+   resize: none;
+   opacity: 100%;  
+   font-size: 24px;
+   color: rgb(158, 32, 32);
+   text-align: center;
+   vertical-align: middle;
+   line-height: 95px;
 }
 
 .div-recebe{
@@ -149,6 +164,7 @@ main{
    background-color: rgb(155, 155, 240);
    font-size: 20px;
    color: white;
+   text-align: center;
 }
 
 #div-botoes{
